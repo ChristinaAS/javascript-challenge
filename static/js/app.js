@@ -8,12 +8,12 @@ var tbody = d3.select("tbody")
 
 console.log(tableData);
 
-function displayTable(tableData) {
-    tableData.forEach(function (ufoReport) {
-        //console.log(ufoReport);
+function displayTable(data) {
+    data.forEach(function (ufoReport) {
+        console.log(ufoReport);
         var row = tbody.append("tr");
         Object.entries(ufoReport).forEach(function ([key, value]) {
-            //console.log(key, value);
+            console.log(key, value);
             var cell = row.append("td");
             cell.text(value);
         });
