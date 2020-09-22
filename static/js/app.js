@@ -19,6 +19,9 @@ function displayTable(data) {
         });
     });
 }
+
+displayTable(tableData);
+
 var button = d3.select("#filter-btn")
 var dateTime = d3.select("#datetime")
 //var filters = {}
@@ -29,9 +32,9 @@ button.on("click", function (sortData) {
     var date = d3.select("#datetime").property("value");
     //console.log(date)
     var filteredData = tableData.filter(ufoFiltered => ufoFiltered.datetime === dateTime.property("value"));
-    displayTable(filteredData)
+    displayTable(filteredData);
 });
-//sortData(tableData)
+//sortData(tableData);
 
 //function updateFilters() {
  //   var filterData = tableData
@@ -41,7 +44,7 @@ button.on("click", function (sortData) {
  //   displayTable(filterData);
 //}
 
-//displayTable(tableData);
+
 //button.on("click", function() {
    // var result = sortData(tableData);
     //displayTable(result);
