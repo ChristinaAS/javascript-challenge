@@ -27,15 +27,33 @@ var dateTime = d3.select("#datetime")
 //var filters = {}
 
 
-button.on("click", function (sortData) {
+function buttonClick() {
     d3.event.preventDefault();
-    var date = d3.select("#datetime").property("value");
-    //console.log(date)
-    var filteredData = tableData.filter(ufoFiltered => ufoFiltered.datetime === dateTime.property("value"));
-    displayTable(filteredData);
-});
-//sortData(tableData);
+    date = d3.select("#datetime").property("value");
+    var filteredData = tableData;
 
+    if (date) {
+        filteredData = filteredData.filter(row => row.datetime === date);
+
+    displayTable(filteredData);
+    }
+}
+d3.selectAll("#filter-btn").on("click", buttonClick);
+
+displayTable(tableData);
+
+
+//button.on("click", function sortData () {
+  //  d3.event.preventDefault();
+  //  console.log("button clicked")
+    
+    //var date = d3.select("#datetime").property("value");
+    //console.log(date)
+  //  var filteredData = tableData.filter(row => row.datetime === dateTime.property("value"));
+  //  displayTable(filteredData);
+//});
+//sortData(tableData);
+//displayTable(filteredData);
 //function updateFilters() {
  //   var filterData = tableData
  //   Object.entries(filters).forEach(function ([key, value]) {
@@ -49,6 +67,5 @@ button.on("click", function (sortData) {
    // var result = sortData(tableData);
     //displayTable(result);
 //})
-
 //d3.selectAll("#filter-btn").on("click", sortData);
 //displayTable(filteredData);
