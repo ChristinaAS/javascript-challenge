@@ -28,19 +28,27 @@ var dateTime = d3.select("#datetime")
 
 
 function buttonClick() {
+    tbody.html("");
     d3.event.preventDefault();
     date = d3.select("#datetime").property("value");
     var filteredData = tableData;
 
     if (date) {
         filteredData = filteredData.filter(row => row.datetime === date);
-
+    filteredData.forEach(function(filteredsearch){
+        var row = tbody.append("tr");
+        Object.entries(filteredsearch).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
     displayTable(filteredData);
-    }
-}
+    };
+};
 d3.selectAll("#filter-btn").on("click", buttonClick);
 
 displayTable(tableData);
+
 
 
 //button.on("click", function sortData () {
